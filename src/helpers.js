@@ -1,5 +1,9 @@
-// local storage
+// Local storage
 export const fetchData = (key) => {
-  // look localStorage and find item based on key
   return JSON.parse(localStorage.getItem(key));
+};
+
+// delete item
+export const deleteItem = ({ key }) => {
+  return localStorage.removeItem(key);
 };
