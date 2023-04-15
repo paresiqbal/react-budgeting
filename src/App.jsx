@@ -11,6 +11,10 @@ import Error from "./pages/Error";
 // actions
 import { logoutAction } from "./actions/logout";
 
+// library
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,6 +41,7 @@ function App() {
   return (
     <div className="App">
       <RouterProvider router={router} />
+      <ToastContainer />
     </div>
   );
 }
