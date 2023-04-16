@@ -21,7 +21,7 @@ export default function AddBudgetForm() {
           <label htmlFor="newBudgetAmount">Amount</label>
           <input
             type="number"
-            name="newBudgetAmout"
+            name="newBudgetAmount"
             id="newBudgetAmount"
             step={0.01}
             placeholder="e.g, Rp 10.000"
