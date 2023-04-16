@@ -23,14 +23,27 @@ export function dashboardLoader() {
 // action
 export async function dashboardAction({ request }) {
   const data = await request.formData();
-  const formData = Object.fromEntries(data);
+  const { _action, ...values } = Object.fromEntries(data);
 
-  try {
-    localStorage.setItem("userName", JSON.stringify(formData.userName));
+  // new user submission
+  if (_action === "newUser") {
+    try {
+      localStorage.setItem("userName", JSON.stringify(values.userName));
 
-    return toast.success(`Welcome, ${formData.userName} 😄`);
-  } catch (error) {
-    throw Error("There was a problem creating your account 😥");
+      return toast.success(`Welcome, ${values.userName} 😄`);
+    } catch (error) {
+      throw Error("There was a problem creating your account 😥");
+    }
+  }
+
+  if (_action === "createBudget") {
+    try {
+      // create budget
+
+      return toast.success("Budget Created 😉");
+    } catch (error) {
+      throw new Error("There was a problem creating your budget 😭");
+    }
   }
 }
 
