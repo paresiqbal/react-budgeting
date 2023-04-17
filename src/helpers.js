@@ -7,6 +7,13 @@ export const fetchData = (key) => {
   return JSON.parse(localStorage.getItem(key));
 };
 
+// get all item from local storage
+export const getAllMatchingItems = ({ category, key, value }) => {
+  const data = fetchData(category) ?? [];
+
+  return data.filter((item) => item[key] === value);
+};
+
 // generate random color
 const generateRandomColor = () => {
   const existingBudgetLength = fetchData("budgets")?.length ?? 0;
