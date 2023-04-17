@@ -2,14 +2,15 @@
 import { useLoaderData } from "react-router";
 
 // helpers function
-import { createBudget, fetchData, waait } from "../helpers";
+import { createBudget, createExpense, fetchData, waait } from "../helpers";
 
 // components
 import Intro from "../components/Intro";
+import AddBudgetForm from "../components/AddBudgetForm";
+import AddExpenseForm from "../components/AddExpenseForm";
 
 // library
 import { toast } from "react-toastify";
-import AddBudgetForm from "../components/AddBudgetForm";
 
 // loader
 export function dashboardLoader() {
@@ -51,6 +52,20 @@ export async function dashboardAction({ request }) {
       throw new Error("There was a problem creating your budget 😭");
     }
   }
+
+  if (_action === "createExpense") {
+    try {
+      createExpense({
+        name: values.newExpense,
+        amount: values.newExpenseAmount,
+        budgetId: values.newExpenseBudget,
+      });
+
+      return toast.success(`Expense ${values.newExpense} Added`);
+    } catch (error) {
+      throw new Error("There was a problem creating your expense 😭");
+    }
+  }
 }
 
 export default function Dashboard() {
@@ -65,12 +80,20 @@ export default function Dashboard() {
               Welcome back, <span>{userName}</span>
             </h1>
             <div className="grid-sm">
-              {/* {budgets ? () : ()} */}
-              <div className="grid-lg">
-                <div className="flex-lg">
+              {budgets && budgets.length > 0 ? (
+                <div className="grid-lg">
+                  <div className="flex-lg">
+                    <AddBudgetForm />
+                    <AddExpenseForm budgets={budgets} />
+                  </div>
+                </div>
+              ) : (
+                <div className="grid sm">
+                  <p>Personal budgeting is the secrete to financial freedom.</p>
+                  <p>Create a budget to get started!</p>
                   <AddBudgetForm />
                 </div>
-              </div>
+              )}
             </div>
           </div>
         ) : (
