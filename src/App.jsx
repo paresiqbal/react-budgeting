@@ -11,7 +11,7 @@ import ExpensesPage, {
   expensesLoader,
 } from "./pages/ExpensesPage";
 import Error from "./pages/Error";
-import BudgetPage, { budgetLoader } from "./pages/BudgetPage";
+import BudgetPage, { budgetAction, budgetLoader } from "./pages/BudgetPage";
 
 // actions
 import { logoutAction } from "./actions/logout";
@@ -40,7 +40,8 @@ const router = createBrowserRouter([
         element: <BudgetPage />,
         // load data from expensesPage
         loader: budgetLoader,
-        // action: expensesAction,
+        action: budgetAction,
+        errorElement: <Error />,
       },
       {
         path: "expenses",
@@ -48,6 +49,7 @@ const router = createBrowserRouter([
         // load data from expensesPage
         loader: expensesLoader,
         action: expensesAction,
+        errorElement: <Error />,
       },
       {
         path: "logout",
