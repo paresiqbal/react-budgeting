@@ -11,6 +11,7 @@ import ExpensesPage, {
   expensesLoader,
 } from "./pages/ExpensesPage";
 import Error from "./pages/Error";
+import BudgetPage, { budgetLoader } from "./pages/BudgetPage";
 
 // actions
 import { logoutAction } from "./actions/logout";
@@ -33,6 +34,13 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
         action: dashboardAction,
         errorElement: <Error />,
+      },
+      {
+        path: "budget/:id",
+        element: <BudgetPage />,
+        // load data from expensesPage
+        loader: budgetLoader,
+        // action: expensesAction,
       },
       {
         path: "expenses",

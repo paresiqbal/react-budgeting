@@ -24,7 +24,7 @@ export default function ExpenseItem({ expenses }) {
       <td>{formatCurrency(expenses.amount)}</td>
       <td>{formatDateToLocaleString(expenses.createdAt)}</td>
       <td>
-        <Link to={`\budget\${budget.id}`} style={{ "--accent": budget.color }}>
+        <Link to={`/budget/${budget.id}`} style={{ "--accent": budget.color }}>
           {budget.name}
         </Link>
       </td>
