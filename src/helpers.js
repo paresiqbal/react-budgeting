@@ -14,6 +14,19 @@ export const getAllMatchingItems = ({ category, key, value }) => {
   return data.filter((item) => item[key] === value);
 };
 
+// delete item from local storage
+export const deleteItem = ({ key, id }) => {
+  const exitstingData = fetchData(key);
+
+  if (id) {
+    const newData = exitstingData.filter((item) => item.id !== id);
+
+    return localStorage.setItem(key, JSON.stringify(newData));
+  }
+
+  return localStorage.removeItem(key);
+};
+
 // generate random color
 const generateRandomColor = () => {
   const existingBudgetLength = fetchData("budgets")?.length ?? 0;
@@ -57,10 +70,10 @@ export const createExpense = ({ name, amount, budgetId }) => {
   );
 };
 
-// delete item
-export const deleteItem = ({ key }) => {
-  return localStorage.removeItem(key);
-};
+// // delete item
+// export const deleteItem = ({ key }) => {
+//   return localStorage.removeItem(key);
+// };
 
 // total spent by budget
 export const calculateSpentByBudget = (budgetId) => {

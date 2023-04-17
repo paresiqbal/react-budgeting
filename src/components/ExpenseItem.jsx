@@ -1,5 +1,5 @@
 // react
-import { Link, useFetcher } from "react-router-dom";
+import { Link, useFetcher, Form } from "react-router-dom";
 
 // helpers
 import {
@@ -7,6 +7,7 @@ import {
   formatDateToLocaleString,
   getAllMatchingItems,
 } from "../helpers";
+import { TrashIcon } from "@heroicons/react/24/solid";
 
 export default function ExpenseItem({ expenses }) {
   const fetcher = useFetcher();
@@ -31,6 +32,13 @@ export default function ExpenseItem({ expenses }) {
         <fetcher.Form method="post">
           <input type="hidden" name="_action" value="deleteExpense" />
           <input type="hidden" name="expenseId" value={expenses.id} />
+          <button
+            type="submit"
+            className="btn btn--warning"
+            aria-label={`Delete &{expense.name} expense`}
+          >
+            <TrashIcon width={15} />
+          </button>
         </fetcher.Form>
       </td>
     </>
