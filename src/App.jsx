@@ -6,7 +6,10 @@ import MainLayout, { mainLayoutLoader } from "./layout/MainLayout";
 
 // route pages
 import Dashboard, { dashboardAction, dashboardLoader } from "./pages/Dashboard";
-import ExpensesPage, { expensesLoader } from "./pages/ExpensesPage";
+import ExpensesPage, {
+  expensesAction,
+  expensesLoader,
+} from "./pages/ExpensesPage";
 import Error from "./pages/Error";
 
 // actions
@@ -36,6 +39,7 @@ const router = createBrowserRouter([
         element: <ExpensesPage />,
         // load data from expensesPage
         loader: expensesLoader,
+        action: expensesAction,
       },
       {
         path: "logout",
