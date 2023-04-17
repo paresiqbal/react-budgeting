@@ -1,6 +1,6 @@
 // wait timer
 export const waait = () =>
-  new Promise((res) => setTimeout(res, Math.random() * 600));
+  new Promise((res) => setTimeout(res, Math.random() * 400));
 
 // Local storage
 export const fetchData = (key) => {

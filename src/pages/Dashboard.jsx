@@ -13,6 +13,7 @@ import Table from "../components/Table";
 
 // library
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 // loader
 export function dashboardLoader() {
@@ -101,10 +102,15 @@ export default function Dashboard() {
                     <div className="grid-md">
                       <h2>Recent Expenses</h2>
                       <Table
-                        expenses={expenses.sort(
-                          (a, b) => b.createdAt - a.createdAt
-                        )}
+                        expenses={expenses
+                          .sort((a, b) => b.createdAt - a.createdAt)
+                          .slice(0, 8)}
                       />
+                      {expenses.length > 8 && (
+                        <Link to={"expenses"} className="btn btn--dark">
+                          view all expenses
+                        </Link>
+                      )}
                     </div>
                   )}
                 </div>
