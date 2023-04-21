@@ -29,7 +29,7 @@ export function deleteBudget({ params }) {
 
     toast.success("Budget deleted");
   } catch (error) {
-    throw new Error("There was an error deleting your budget.");
+    throw new Error("There was an error deleting your budget. 🤔");
   }
 
   return redirect("/");
