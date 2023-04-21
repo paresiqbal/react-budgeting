@@ -9,7 +9,7 @@ import { TrashIcon } from "@heroicons/react/24/solid";
 
 export default function Navbar({ userName }) {
   const handleFormSubmit = (e) => {
-    if (!confirm("Delete user and all data ? 🤔")) {
+    if (!confirm("Delete user and all expense data ? 🤔")) {
       e.preventDefault();
     }
   };
